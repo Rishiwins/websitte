@@ -147,14 +147,14 @@ const Contact = () => {
 
             {/* Stats */}
             <motion.div
-              className="bg-gray-900/50 backdrop-blur border border-gray-800 rounded-2xl p-8"
+              className="bg-gray-900/50 backdrop-blur border border-gray-800 rounded-2xl p-4 sm:p-6 lg:p-8"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-xl font-bold text-white mb-6 text-center">Why Work With Me?</h3>
-              <div className="grid grid-cols-3 gap-6">
+              <h3 className="text-lg sm:text-xl font-bold text-white mb-4 sm:mb-6 text-center">Why Work With Me?</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
                 {stats.map((stat, index) => (
                   <motion.div
                     key={index}
@@ -165,10 +165,10 @@ const Contact = () => {
                     viewport={{ once: true }}
                     whileHover={{ scale: 1.05 }}
                   >
-                    <div className="text-2xl font-bold text-transparent bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text mb-1">
+                    <div className="text-xl sm:text-2xl font-bold text-transparent bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text mb-1">
                       {stat.number}
                     </div>
-                    <div className="text-gray-400 text-sm">{stat.label}</div>
+                    <div className="text-gray-400 text-xs sm:text-sm">{stat.label}</div>
                   </motion.div>
                 ))}
               </div>
@@ -184,7 +184,7 @@ const Contact = () => {
             viewport={{ once: true }}
           >
             {/* Main CTA Card */}
-            <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/80 backdrop-blur border border-gray-700 rounded-3xl p-10 relative overflow-hidden">
+            <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/80 backdrop-blur border border-gray-700 rounded-3xl p-6 sm:p-8 lg:p-10 relative overflow-hidden">
               {/* Background Pattern */}
               <div className="absolute inset-0 opacity-10">
                 <svg className="w-full h-full" viewBox="0 0 400 400">
@@ -198,14 +198,14 @@ const Contact = () => {
               </div>
 
               <div className="relative z-10">
-                <h3 className="text-3xl font-bold text-white mb-4">Ready to Start?</h3>
-                <p className="text-gray-300 mb-8 leading-relaxed">
+                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3 sm:mb-4">Ready to Start?</h3>
+                <p className="text-gray-300 mb-6 sm:mb-8 leading-relaxed text-sm sm:text-base">
                   Whether you need AI-powered solutions, data science consulting, or full-stack development,
                   I'm here to help bring your vision to life.
                 </p>
 
                 {/* Services List */}
-                <div className="space-y-3 mb-8">
+                <div className="space-y-2 sm:space-y-3 mb-6 sm:mb-8">
                   {[
                     'AI & Machine Learning Development',
                     'Data Science & Analytics',
@@ -214,26 +214,26 @@ const Contact = () => {
                   ].map((service, index) => (
                     <motion.div
                       key={index}
-                      className="flex items-center space-x-3"
+                      className="flex items-center space-x-2 sm:space-x-3"
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.5, delay: index * 0.1 }}
                       viewport={{ once: true }}
                     >
-                      <div className="w-2 h-2 rounded-full bg-gradient-to-r from-blue-400 to-purple-500" />
-                      <span className="text-gray-300">{service}</span>
+                      <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 flex-shrink-0" />
+                      <span className="text-gray-300 text-sm sm:text-base">{service}</span>
                     </motion.div>
                   ))}
                 </div>
 
                 {/* CTA Buttons */}
-                <div className="space-y-4">
+                <div className="space-y-3 sm:space-y-4">
                   <motion.a
                     href="/resume.pdf"
                     download
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="block w-full px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full text-white font-medium text-center hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
+                    className="block w-full px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full text-white font-medium text-center hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 text-sm sm:text-base"
                   >
                     Download Resume
                   </motion.a>

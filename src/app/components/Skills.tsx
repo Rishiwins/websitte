@@ -71,27 +71,27 @@ const Skills = () => {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_70%,rgba(139,92,246,0.2),transparent_70%)]" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <motion.div
-          className="text-center mb-20"
+          className="text-center mb-12 sm:mb-20"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 font-sora">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 font-sora">
             Technical{' '}
             <span className="text-transparent bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text">
               Skills
             </span>
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto">
             Comprehensive expertise across the full spectrum of modern AI and data science technologies
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-12">
+        <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
           {/* Category Selector */}
           <motion.div
             className="lg:col-span-1"
@@ -100,12 +100,12 @@ const Skills = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="space-y-4 sticky top-20">
+            <div className="space-y-3 sm:space-y-4 lg:sticky lg:top-20">
               {skillCategories.map((category, index) => (
                 <motion.button
                   key={index}
                   onClick={() => setActiveCategory(index)}
-                  className={`w-full text-left p-6 rounded-2xl border transition-all duration-300 ${
+                  className={`w-full text-left p-4 sm:p-6 rounded-2xl border transition-all duration-300 ${
                     activeCategory === index
                       ? 'bg-gray-900/80 border-gray-600 shadow-lg'
                       : 'bg-gray-900/30 border-gray-800 hover:border-gray-700'
@@ -113,15 +113,15 @@ const Skills = () => {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <div className="flex items-center space-x-4">
-                    <div className="text-3xl">{category.icon}</div>
+                  <div className="flex items-center space-x-3 sm:space-x-4">
+                    <div className="text-2xl sm:text-3xl">{category.icon}</div>
                     <div>
-                      <h3 className={`text-xl font-bold ${
+                      <h3 className={`text-lg sm:text-xl font-bold ${
                         activeCategory === index ? 'text-white' : 'text-gray-300'
                       }`}>
                         {category.title}
                       </h3>
-                      <p className="text-sm text-gray-500">{category.skills.length} skills</p>
+                      <p className="text-xs sm:text-sm text-gray-500">{category.skills.length} skills</p>
                     </div>
                   </div>
                 </motion.button>
@@ -137,18 +137,18 @@ const Skills = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="bg-gray-900/50 backdrop-blur border border-gray-800 rounded-3xl p-10">
+            <div className="bg-gray-900/50 backdrop-blur border border-gray-800 rounded-3xl p-6 sm:p-8 lg:p-10">
               {/* Category Header */}
-              <div className="flex items-center space-x-4 mb-8">
-                <div className="text-4xl">{skillCategories[activeCategory].icon}</div>
+              <div className="flex items-center space-x-3 sm:space-x-4 mb-6 sm:mb-8">
+                <div className="text-3xl sm:text-4xl">{skillCategories[activeCategory].icon}</div>
                 <div>
-                  <h3 className="text-3xl font-bold text-white">{skillCategories[activeCategory].title}</h3>
-                  <p className="text-gray-400">Expertise & Proficiency</p>
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white">{skillCategories[activeCategory].title}</h3>
+                  <p className="text-gray-400 text-sm sm:text-base">Expertise & Proficiency</p>
                 </div>
               </div>
 
               {/* Skills Grid */}
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 {skillCategories[activeCategory].skills.map((skill, index) => (
                   <motion.div
                     key={skill.name}
@@ -158,13 +158,13 @@ const Skills = () => {
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                   >
                     {/* Skill Name & Level */}
-                    <div className="flex justify-between items-center mb-3">
-                      <span className="text-lg font-medium text-white">{skill.name}</span>
-                      <span className="text-blue-400 font-semibold">{skill.level}%</span>
+                    <div className="flex justify-between items-center mb-2 sm:mb-3">
+                      <span className="text-base sm:text-lg font-medium text-white">{skill.name}</span>
+                      <span className="text-blue-400 font-semibold text-sm sm:text-base">{skill.level}%</span>
                     </div>
 
                     {/* Progress Bar */}
-                    <div className="relative h-3 bg-gray-800 rounded-full overflow-hidden">
+                    <div className="relative h-2.5 sm:h-3 bg-gray-800 rounded-full overflow-hidden">
                       <motion.div
                         className={`h-full bg-gradient-to-r ${skillCategories[activeCategory].color} rounded-full`}
                         initial={{ width: 0 }}
@@ -185,19 +185,19 @@ const Skills = () => {
               </div>
 
               {/* Category Stats */}
-              <div className="mt-8 pt-8 border-t border-gray-700">
-                <div className="grid grid-cols-2 gap-6">
+              <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-gray-700">
+                <div className="grid grid-cols-2 gap-4 sm:gap-6">
                   <div className="text-center">
-                    <div className={`text-2xl font-bold text-transparent bg-gradient-to-r ${skillCategories[activeCategory].color} bg-clip-text`}>
+                    <div className={`text-xl sm:text-2xl font-bold text-transparent bg-gradient-to-r ${skillCategories[activeCategory].color} bg-clip-text`}>
                       {Math.round(skillCategories[activeCategory].skills.reduce((acc, skill) => acc + skill.level, 0) / skillCategories[activeCategory].skills.length)}%
                     </div>
-                    <div className="text-gray-400 text-sm">Average Proficiency</div>
+                    <div className="text-gray-400 text-xs sm:text-sm">Average Proficiency</div>
                   </div>
                   <div className="text-center">
-                    <div className={`text-2xl font-bold text-transparent bg-gradient-to-r ${skillCategories[activeCategory].color} bg-clip-text`}>
+                    <div className={`text-xl sm:text-2xl font-bold text-transparent bg-gradient-to-r ${skillCategories[activeCategory].color} bg-clip-text`}>
                       {skillCategories[activeCategory].skills.length}
                     </div>
-                    <div className="text-gray-400 text-sm">Core Technologies</div>
+                    <div className="text-gray-400 text-xs sm:text-sm">Core Technologies</div>
                   </div>
                 </div>
               </div>
@@ -207,29 +207,29 @@ const Skills = () => {
 
         {/* Skills Visualization */}
         <motion.div
-          className="mt-20"
+          className="mt-12 sm:mt-16 lg:mt-20"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <div className="bg-gray-900/30 backdrop-blur border border-gray-800 rounded-3xl p-10">
-            <h3 className="text-2xl font-bold text-center text-white mb-8">Technology Ecosystem</h3>
+          <div className="bg-gray-900/30 backdrop-blur border border-gray-800 rounded-3xl p-6 sm:p-8 lg:p-10">
+            <h3 className="text-xl sm:text-2xl font-bold text-center text-white mb-6 sm:mb-8">Technology Ecosystem</h3>
 
             {/* Floating Tech Bubbles */}
-            <div className="relative h-64 overflow-hidden rounded-2xl">
+            <div className="relative h-48 sm:h-56 lg:h-64 overflow-hidden rounded-2xl">
               {skillCategories.flatMap(category =>
                 category.skills.map((skill, index) => (
                   <motion.div
                     key={`${category.title}-${skill.name}`}
-                    className={`absolute px-4 py-2 bg-gradient-to-r ${category.color} bg-opacity-20 border border-gray-600 rounded-full text-sm font-medium text-white backdrop-blur`}
+                    className={`absolute px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r ${category.color} bg-opacity-20 border border-gray-600 rounded-full text-xs sm:text-sm font-medium text-white backdrop-blur`}
                     style={{
-                      left: `${Math.random() * 80}%`,
-                      top: `${Math.random() * 80}%`,
+                      left: `${Math.random() * 70 + 5}%`,
+                      top: `${Math.random() * 70 + 5}%`,
                     }}
                     animate={{
-                      y: [-10, 10, -10],
-                      x: [-5, 5, -5],
+                      y: [-8, 8, -8],
+                      x: [-4, 4, -4],
                     }}
                     transition={{
                       duration: 4 + Math.random() * 2,
