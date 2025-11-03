@@ -177,22 +177,6 @@ const Projects = () => {
           </motion.div>
         </div>
 
-        {/* View All Projects CTA */}
-        <motion.div
-          className="text-center mt-20"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full text-white font-medium hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
-          >
-            View All Projects on GitHub
-          </motion.button>
-        </motion.div>
       </div>
     </motion.section>
   );

@@ -2,6 +2,7 @@
 
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import SimpleAvatar3D from './SimpleAvatar3D';
 
 const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -38,8 +39,8 @@ const Hero = () => {
           {Array.from({ length: 20 }).map((_, i) => (
             <motion.circle
               key={i}
-              cx={Math.random() * 1000}
-              cy={Math.random() * 1000}
+              cx={100 + (i * 47) % 800}
+              cy={100 + (i * 73) % 800}
               r="2"
               fill="url(#neural)"
               animate={{
@@ -47,9 +48,9 @@ const Hero = () => {
                 scale: [1, 1.5, 1],
               }}
               transition={{
-                duration: 3 + Math.random() * 2,
+                duration: 3 + (i % 3),
                 repeat: Infinity,
-                delay: Math.random() * 2,
+                delay: i * 0.1,
               }}
             />
           ))}
@@ -141,12 +142,12 @@ const Hero = () => {
           </motion.div>
         </div>
 
-        {/* Profile Image with 3D Effect */}
+        {/* 3D Avatar Section */}
         <div className="flex-1 flex justify-center items-center ml-12">
           <motion.div
-            className="relative"
-            initial={{ opacity: 0, scale: 0.8, rotateY: -30 }}
-            animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+            className="relative w-80 h-96 md:w-96 md:h-[28rem]"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.5, delay: 0.8 }}
           >
             {/* Floating Glow Effect */}
@@ -162,67 +163,10 @@ const Hero = () => {
               }}
             />
 
-            {/* Main Image */}
-            <motion.div
-              className="relative z-10"
-              whileHover={{
-                scale: 1.05,
-                rotateY: 5,
-                rotateX: 5,
-              }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <img
-                src="/images/rishi.jpg"
-                alt="Rishi Chowdary"
-                className="w-80 h-96 md:w-96 md:h-[28rem] object-cover rounded-3xl shadow-2xl shadow-blue-500/20 border border-gray-800"
-                style={{
-                  filter: 'brightness(1.1) contrast(1.1)',
-                }}
-              />
-
-              {/* AI Circuit Overlay */}
-              <div className="absolute inset-0 rounded-3xl opacity-20">
-                <svg className="w-full h-full" viewBox="0 0 400 500">
-                  <motion.path
-                    d="M50 50 L350 50 L350 450 L50 450 Z"
-                    stroke="url(#circuit)"
-                    strokeWidth="2"
-                    fill="none"
-                    initial={{ pathLength: 0 }}
-                    animate={{ pathLength: 1 }}
-                    transition={{ duration: 3, delay: 1 }}
-                  />
-                  <defs>
-                    <linearGradient id="circuit" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#3B82F6" />
-                      <stop offset="100%" stopColor="#8B5CF6" />
-                    </linearGradient>
-                  </defs>
-                </svg>
-              </div>
-            </motion.div>
-
-            {/* Floating Data Nodes */}
-            {Array.from({ length: 6 }).map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute w-3 h-3 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full"
-                style={{
-                  top: `${Math.random() * 100}%`,
-                  left: `${Math.random() * 100}%`,
-                }}
-                animate={{
-                  y: [-10, 10, -10],
-                  opacity: [0.3, 1, 0.3],
-                }}
-                transition={{
-                  duration: 3 + Math.random() * 2,
-                  repeat: Infinity,
-                  delay: Math.random() * 2,
-                }}
-              />
-            ))}
+            {/* 3D Avatar Model */}
+            <div className="relative z-10 w-full h-full rounded-3xl overflow-hidden shadow-2xl shadow-blue-500/20 border border-gray-800">
+              <SimpleAvatar3D />
+            </div>
           </motion.div>
         </div>
       </div>

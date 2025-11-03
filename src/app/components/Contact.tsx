@@ -37,7 +37,7 @@ const Contact = () => {
   const stats = [
     { number: '24h', label: 'Response Time' },
     { number: '100%', label: 'Client Satisfaction' },
-    { number: '15+', label: 'AI Projects Delivered' },
+    { number: '15+', label: 'Projects Delivered' },
   ];
 
   return (
@@ -229,20 +229,11 @@ const Contact = () => {
                 {/* CTA Buttons */}
                 <div className="space-y-4">
                   <motion.a
-                    href="mailto:rishichowdaryperam@gmail.com?subject=Project Inquiry"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="block w-full px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full text-white font-medium text-center hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
-                  >
-                    Start a Project
-                  </motion.a>
-
-                  <motion.a
                     href="/resume.pdf"
                     download
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="block w-full px-8 py-4 border border-gray-600 rounded-full text-white font-medium text-center hover:border-purple-500 hover:text-purple-400 transition-all duration-300"
+                    className="block w-full px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full text-white font-medium text-center hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
                   >
                     Download Resume
                   </motion.a>
