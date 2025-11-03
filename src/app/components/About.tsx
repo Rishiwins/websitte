@@ -22,7 +22,7 @@ const About = () => {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_50%)]" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
         {/* Content */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
@@ -31,7 +31,7 @@ const About = () => {
           viewport={{ once: true }}
         >
           <motion.h2
-            className="text-5xl md:text-6xl font-bold mb-8 font-sora"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 font-sora text-center lg:text-left"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -44,7 +44,7 @@ const About = () => {
           </motion.h2>
 
           <motion.div
-            className="space-y-6 text-lg text-gray-300 leading-relaxed"
+            className="space-y-4 sm:space-y-6 text-base sm:text-lg text-gray-300 leading-relaxed text-center lg:text-left"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -68,7 +68,7 @@ const About = () => {
 
           {/* Stats */}
           <motion.div
-            className="grid grid-cols-2 md:grid-cols-3 gap-8 mt-12"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mt-8 sm:mt-12"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}

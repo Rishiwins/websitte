@@ -17,7 +17,7 @@ const ProfilePhoto = () => {
       {/* Profile Photo */}
       <div className="relative z-10 w-full h-full flex items-center justify-center">
         <motion.div
-          className="relative w-96 h-[28rem] overflow-hidden rounded-3xl shadow-2xl shadow-blue-500/20 border border-gray-700"
+          className="relative w-full h-full overflow-hidden rounded-3xl shadow-2xl shadow-blue-500/20 border border-gray-700"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
@@ -55,4 +55,6 @@ const ProfilePhoto = () => {
   );
 };
 
-export default ProfilePhoto;
+const SimpleAvatar3D = ProfilePhoto;
+
+export default SimpleAvatar3D;
