@@ -1,11 +1,19 @@
 'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 const Skills = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeCategory, setActiveCategory] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 640);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const skillCategories = [
     {
@@ -218,29 +226,46 @@ const Skills = () => {
 
             {/* Floating Tech Bubbles */}
             <div className="relative h-48 sm:h-56 lg:h-64 overflow-hidden rounded-2xl">
-              {skillCategories.flatMap(category =>
-                category.skills.map((skill, index) => (
-                  <motion.div
-                    key={`${category.title}-${skill.name}`}
-                    className={`absolute px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r ${category.color} bg-opacity-20 border border-gray-600 rounded-full text-xs sm:text-sm font-medium text-white backdrop-blur`}
-                    style={{
-                      left: `${Math.random() * 70 + 5}%`,
-                      top: `${Math.random() * 70 + 5}%`,
-                    }}
-                    animate={{
-                      y: [-8, 8, -8],
-                      x: [-4, 4, -4],
-                    }}
-                    transition={{
-                      duration: 4 + Math.random() * 2,
-                      repeat: Infinity,
-                      delay: Math.random() * 2,
-                    }}
-                    whileHover={{ scale: 1.1, zIndex: 10 }}
-                  >
-                    {skill.name}
-                  </motion.div>
-                ))
+              {skillCategories.flatMap((category, categoryIndex) =>
+                category.skills.map((skill, skillIndex) => {
+                  // Better positioning algorithm for mobile
+                  const totalItems = skillCategories.reduce((acc, cat) => acc + cat.skills.length, 0);
+                  const currentIndex = categoryIndex * category.skills.length + skillIndex;
+                  const cols = isMobile ? 3 : 6; // 3 columns on mobile, 6 on desktop
+                  const rows = Math.ceil(totalItems / cols);
+                  const col = currentIndex % cols;
+                  const row = Math.floor(currentIndex / cols);
+
+                  return (
+                    <motion.div
+                      key={`${category.title}-${skill.name}`}
+                      className={`absolute px-2 py-1 sm:px-3 sm:py-1.5 bg-gradient-to-r ${category.color} bg-opacity-20 border border-gray-600 rounded-full text-xs font-medium text-white backdrop-blur whitespace-nowrap`}
+                      style={{
+                        left: `${10 + (col * (80 / cols))}%`,
+                        top: `${10 + (row * (80 / rows))}%`,
+                      }}
+                      initial={{
+                        opacity: 0,
+                        scale: 0.8
+                      }}
+                      animate={{
+                        opacity: 1,
+                        scale: 1,
+                        y: [-6, 6, -6],
+                        x: [-3, 3, -3],
+                      }}
+                      transition={{
+                        scale: { duration: 0.5, delay: currentIndex * 0.1 },
+                        opacity: { duration: 0.5, delay: currentIndex * 0.1 },
+                        y: { duration: 4 + Math.random() * 2, repeat: Infinity, delay: Math.random() * 2 },
+                        x: { duration: 3 + Math.random() * 2, repeat: Infinity, delay: Math.random() * 2 },
+                      }}
+                      whileHover={{ scale: 1.1, zIndex: 10 }}
+                    >
+                      {skill.name}
+                    </motion.div>
+                  );
+                })
               )}
             </div>
           </div>

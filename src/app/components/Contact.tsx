@@ -118,22 +118,22 @@ const Contact = () => {
                   whileHover={{ scale: 1.02, x: 10 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <div className={`p-6 bg-gray-900/50 backdrop-blur border rounded-2xl transition-all duration-300 ${
+                  <div className={`p-4 sm:p-6 bg-gray-900/50 backdrop-blur border rounded-2xl transition-all duration-300 ${
                     hoveredContact === index ? 'border-gray-600 bg-gray-900/80' : 'border-gray-800'
                   }`}>
-                    <div className="flex items-center space-x-4">
-                      <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${method.color} flex items-center justify-center text-2xl`}>
+                    <div className="flex items-center space-x-3 sm:space-x-4">
+                      <div className={`w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-r ${method.color} flex items-center justify-center text-xl sm:text-2xl flex-shrink-0`}>
                         {method.icon}
                       </div>
-                      <div className="flex-1">
-                        <h3 className="text-xl font-bold text-white mb-1">{method.label}</h3>
-                        <p className="text-gray-400 text-sm mb-2">{method.description}</p>
-                        <p className={`font-medium text-transparent bg-gradient-to-r ${method.color} bg-clip-text`}>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-lg sm:text-xl font-bold text-white mb-1">{method.label}</h3>
+                        <p className="text-gray-400 text-xs sm:text-sm mb-2">{method.description}</p>
+                        <p className={`font-medium text-transparent bg-gradient-to-r ${method.color} bg-clip-text text-sm sm:text-base break-all sm:break-normal`}>
                           {method.value}
                         </p>
                       </div>
                       <motion.div
-                        className="text-gray-400"
+                        className="text-gray-400 flex-shrink-0"
                         animate={{ x: hoveredContact === index ? 5 : 0 }}
                         transition={{ duration: 0.2 }}
                       >
@@ -177,7 +177,7 @@ const Contact = () => {
 
           {/* Interactive CTA */}
           <motion.div
-            className="relative"
+            className="relative w-full"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
