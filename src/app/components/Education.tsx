@@ -215,15 +215,13 @@ const Education = () => {
                         fill="url(#academicGradient)"
                         initial={{ scale: 0 }}
                         whileInView={{ scale: 1 }}
-                        transition={{ duration: 0.5, delay: i * 0.1 }}
                         viewport={{ once: true }}
                         animate={{
                           opacity: [0.7, 1, 0.7],
                         }}
                         transition={{
-                          duration: 2,
-                          repeat: Infinity,
-                          delay: i * 0.3,
+                          scale: { duration: 0.5, delay: i * 0.1 },
+                          opacity: { duration: 2, repeat: Infinity, delay: i * 0.3 }
                         }}
                       />
 
