@@ -72,36 +72,40 @@ const Experience = () => {
         <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(59,130,246,0.1)_25%,rgba(59,130,246,0.1)_50%,transparent_50%,transparent_75%,rgba(139,92,246,0.1)_75%)] bg-[length:60px_60px]" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <motion.div
-          className="text-center mb-20"
+          className="text-center mb-12 sm:mb-20"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 font-sora">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 font-sora">
             Professional{' '}
             <span className="text-transparent bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text">
               Experience
             </span>
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto">
             Building innovative AI solutions and driving digital transformation across diverse industries
           </p>
         </motion.div>
 
         {/* Timeline */}
         <div className="relative">
-          {/* Timeline Line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-blue-500 via-purple-500 to-cyan-500 h-full rounded-full opacity-50" />
+          {/* Timeline Line - Hidden on mobile, shown on larger screens */}
+          <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-blue-500 via-purple-500 to-cyan-500 h-full rounded-full opacity-50" />
+
+          {/* Mobile Timeline Line - Left aligned for mobile */}
+          <div className="lg:hidden absolute left-4 top-0 w-1 bg-gradient-to-b from-blue-500 via-purple-500 to-cyan-500 h-full rounded-full opacity-50" />
 
           {experiences.map((exp, index) => (
             <motion.div
               key={index}
-              className={`relative flex items-center mb-20 ${
-                index % 2 === 0 ? 'justify-start' : 'justify-end'
+              className={`relative mb-12 sm:mb-16 lg:mb-20 ${
+                // Mobile: all items align left, Desktop: alternating alignment
+                'lg:flex lg:items-center ' + (index % 2 === 0 ? 'lg:justify-start' : 'lg:justify-end')
               }`}
               initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -110,45 +114,46 @@ const Experience = () => {
             >
               {/* Timeline Node */}
               <motion.div
-                className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 border-4 border-black z-10"
+                className="absolute w-4 h-4 lg:w-6 lg:h-6 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 border-2 lg:border-4 border-black z-10
+                          left-2.5 lg:left-1/2 lg:transform lg:-translate-x-1/2"
                 whileHover={{ scale: 1.5 }}
                 transition={{ type: "spring", stiffness: 300 }}
               />
 
               {/* Content Card */}
               <motion.div
-                className={`w-5/12 ${index % 2 === 0 ? 'mr-auto pr-8' : 'ml-auto pl-8'}`}
+                className={`ml-8 lg:ml-0 lg:w-5/12 ${index % 2 === 0 ? 'lg:mr-auto lg:pr-8' : 'lg:ml-auto lg:pl-8'}`}
                 whileHover={{ scale: 1.02, y: -5 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <div className="bg-gray-900/50 backdrop-blur border border-gray-800 rounded-2xl p-8 hover:border-gray-700 transition-all duration-300">
+                <div className="bg-gray-900/50 backdrop-blur border border-gray-800 rounded-2xl p-4 sm:p-6 lg:p-8 hover:border-gray-700 transition-all duration-300">
                   {/* Period Badge */}
                   <motion.div
-                    className={`inline-block px-4 py-2 rounded-full text-sm font-medium mb-4 bg-gradient-to-r ${exp.color} text-white`}
+                    className={`inline-block px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-medium mb-3 sm:mb-4 bg-gradient-to-r ${exp.color} text-white`}
                     whileHover={{ scale: 1.05 }}
                   >
                     {exp.period}
                   </motion.div>
 
                   {/* Company & Role */}
-                  <h3 className="text-2xl font-bold text-white mb-2">{exp.company}</h3>
-                  <h4 className="text-xl text-blue-400 font-medium mb-4">{exp.role}</h4>
+                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-2">{exp.company}</h3>
+                  <h4 className="text-base sm:text-lg lg:text-xl text-blue-400 font-medium mb-3 sm:mb-4">{exp.role}</h4>
 
                   {/* Description */}
-                  <p className="text-gray-300 mb-6 leading-relaxed">{exp.description}</p>
+                  <p className="text-gray-300 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">{exp.description}</p>
 
                   {/* Achievements */}
                   <ul className="space-y-2">
                     {exp.achievements.map((achievement, idx) => (
                       <motion.li
                         key={idx}
-                        className="flex items-start text-gray-400 text-sm"
+                        className="flex items-start text-gray-400 text-xs sm:text-sm"
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5, delay: 0.1 * idx }}
                         viewport={{ once: true }}
                       >
-                        <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${exp.color} mt-2 mr-3 flex-shrink-0`} />
+                        <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${exp.color} mt-1.5 sm:mt-2 mr-2 sm:mr-3 flex-shrink-0`} />
                         {achievement}
                       </motion.li>
                     ))}
@@ -161,7 +166,7 @@ const Experience = () => {
 
         {/* Bottom CTA */}
         <motion.div
-          className="text-center mt-20"
+          className="text-center mt-12 sm:mt-16 lg:mt-20"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -171,7 +176,7 @@ const Experience = () => {
             href="#contact"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-block px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full text-white font-medium hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300"
+            className="inline-block px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full text-white font-medium hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 text-sm sm:text-base"
           >
             Let's Work Together
           </motion.a>
