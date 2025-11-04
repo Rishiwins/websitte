@@ -81,10 +81,6 @@ export default function Home() {
         <Contact />
       </section>
 
-      {/* Footer */}
-      <footer className="py-8 text-center text-gray-400 border-t border-gray-800">
-        <p>Built by Rishi Chowdary with AI</p>
-      </footer>
     </div>
   );
 }
