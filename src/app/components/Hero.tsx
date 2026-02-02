@@ -136,8 +136,8 @@ const Hero = () => {
                 <a href="mailto:rishichowdaryperam@gmail.com" className="hover:text-blue-400 transition-colors">
                   rishichowdaryperam@gmail.com
                 </a>
-                <a href="tel:201-241-5763" className="hover:text-purple-400 transition-colors">
-                  201-241-5763
+                <a href="tel:+919908023979" className="hover:text-purple-400 transition-colors">
+                  +91 9908023979
                 </a>
                 <a href="https://linkedin.com/in/rishipc" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors">
                   linkedin.com/in/rishipc

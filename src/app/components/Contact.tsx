@@ -19,8 +19,8 @@ const Contact = () => {
     {
       icon: '📱',
       label: 'Phone',
-      value: '201-241-5763',
-      href: 'tel:201-241-5763',
+      value: '+91 9908023979',
+      href: 'tel:+919908023979',
       color: 'from-purple-500 to-pink-400',
       description: 'Available for quick consultations'
     },
